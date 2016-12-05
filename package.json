@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint app.js --color --cache",
-    "start": "nodemon server.js --exec \"npm run lint\"",
+    "lint": "./node_modules/.bin/eslint . --color --cache",
+    "start": "nodemon server.js --exec \"npm run lint && node\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

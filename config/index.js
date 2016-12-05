@@ -5,5 +5,5 @@ const production = require('./env/production')
 module.exports = {
   development: development,
   staging: staging,
-  production: production,
+  production: production
 }[process.env.NODE_ENV || 'development']
