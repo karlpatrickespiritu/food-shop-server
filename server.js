@@ -1,13 +1,16 @@
 require('dotenv').config()
 
-const config = require('./config')
-// const express = require('express')
+// const config = require('./config')
 // const mongoose = require('mongoose')
+
+const express = require('express')
+const app = express()
 const port = process.env.PORT || 3000
+const controllers = require('./app/controllers')
 
-// const app = express()
+app.use(controllers)
+app.use(express.static(`${__dirname}/public`))
 
-console.log({
-  config,
-  port
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
 })
