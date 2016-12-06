@@ -10,16 +10,13 @@ const ProductSchema = new Schema({
 /**
  * Validations
  */
-ProductSchema.path('name').validate((name) => name.length, 'Name is required');
-
-ProductSchema.path('price').validate((price) => price.length, 'Price is required');
+ProductSchema.path('name').required(true, 'Name is required')
+ProductSchema.path('price').required(true, 'Price is required')
 
 /**
  * Methods
  */
-ProductSchema.methods = {
-  // 
-}
+ProductSchema.methods = {}
 
 /**
  * Statics
@@ -33,7 +30,7 @@ ProductSchema.statics = {
    * @api private
    */
   load: (options, cb) => {
-    options.select = options.select || 'name price description';
+    options.select = options.select || 'name price description'
     return this.findOne(options.criteria)
       .select(options.select)
       .exec(cb)

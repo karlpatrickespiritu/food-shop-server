@@ -2,6 +2,8 @@
 
 require('dotenv').config()
 
+const fs = require('fs')
+const join = require('path').join
 const config = require('./config')
 const mongoose = require('mongoose')
 const express = require('express')
@@ -9,6 +11,15 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 const controllers = require('./app/controllers')
+const models = join(__dirname, 'app/models')
+
+// Bootstrap models
+fs.readdirSync(join(models))
+  .filter(file => {
+    console.log(file)
+    ~file.search(/^[^.].*\.js$/)
+  })
+  .forEach(file => require(join(models, file)))
 
 app.use(express.static(`${__dirname}/public`))
 app.use(bodyParser.json())
