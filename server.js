@@ -15,10 +15,7 @@ const models = join(__dirname, 'app/models')
 
 // Bootstrap models
 fs.readdirSync(join(models))
-  .filter(file => {
-    console.log(file)
-    ~file.search(/^[^.].*\.js$/)
-  })
+  .filter(file => ~file.search(/^[^.].*\.js$/))
   .forEach(file => require(join(models, file)))
 
 app.use(express.static(`${__dirname}/public`))
