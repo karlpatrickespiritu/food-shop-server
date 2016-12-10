@@ -7,10 +7,11 @@ const join = require('path').join
 const config = require('./config')
 const mongoose = require('mongoose')
 const express = require('express')
+const passport = require('passport')
 const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
-const controllers = require('./app/controllers')
+const routes = require('./app/routes')
 const models = join(__dirname, 'app/models')
 
 // Bootstrap models
@@ -21,7 +22,9 @@ fs.readdirSync(join(models))
 app.use(express.static(`${__dirname}/public`))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(controllers)
+app.use(routes)
+
+require('./config/passport')(passport)
 
 connect()
   .on('error', console.log)

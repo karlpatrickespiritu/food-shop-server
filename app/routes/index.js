@@ -1,11 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const api = require('./api')
+const products = require('./productsRoute')
 
-/**
- * For Restful requests
- */
-router.use('/api', api)
+router.use('/api/products', products)
 
 module.exports = router
-
