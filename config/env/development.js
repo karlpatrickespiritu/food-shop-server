@@ -1,8 +1,8 @@
 module.exports = {
   db: 'mongodb://127.0.0.1:27017',
   facebook: {
-    clientID: 'APP_ID',
-    clientSecret: 'SECRET',
+    clientID: process.env.FB_APP_ID || 'APP_ID',
+    clientSecret: process.env.FB_APP_SECRET || 'SECRET',
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     scope: [
       'email',

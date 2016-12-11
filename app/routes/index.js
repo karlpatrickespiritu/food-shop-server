@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const products = require('./productsRoute')
+const tutorials = require('./tutorialRoutes')
 
-router.use('/api/products', products)
+router.use('/api/tutorials', tutorials)
 
 module.exports = router
