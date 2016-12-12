@@ -8,7 +8,6 @@ const config = require('./config')
 const mongoose = require('mongoose')
 const express = require('express')
 const passport = require('passport')
-const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 const routes = require('./app/routes')
@@ -19,12 +18,9 @@ fs.readdirSync(join(models))
   .filter(file => ~file.search(/^[^.].*\.js$/))
   .forEach(file => require(join(models, file)))
 
-app.use(express.static(`${__dirname}/public`))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(routes)
-
 require('./config/passport')(passport)
+require('./config/express')(app, passport)
+app.use(routes)
 
 connect()
   .on('error', console.log)

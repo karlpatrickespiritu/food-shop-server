@@ -3,12 +3,7 @@ module.exports = {
   facebook: {
     clientID: process.env.FB_APP_ID || 'APP_ID',
     clientSecret: process.env.FB_APP_SECRET || 'SECRET',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
-    scope: [
-      'email',
-      'user_about_me',
-      'user_friends'
-    ]
+    callbackURL: `http://localhost:${process.env.PORT}/auth/facebook/callback`
   },
   google: {
     clientID: 'APP_ID',

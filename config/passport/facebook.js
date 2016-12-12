@@ -10,7 +10,6 @@ module.exports = new FacebookStrategy({
   profileFields: ['id', 'displayName', 'photos', 'email']
 },
   (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
     const options = {
       criteria: { 'facebook.id': profile.id }
     }
