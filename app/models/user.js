@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  first_name: { type: String, required: [true, 'first name is required'] },
-  last_name: { type: String, required: [true, 'last name is required'] },
+  name: { type: String, required: [true, 'name is required'] },
   email: { type: String, required: [true, 'email is required'] },
   username: { type: String, required: [true, 'username is required'] },
   provider: { type: String, default: '' },
@@ -30,7 +29,7 @@ UserSchema.statics = {
    * @param {Function} cb
    * @api private
    */
-  load: (options, cb) => {
+  load: function (options, cb) {
     options.select = options.select || 'first_name last_name'
     return this.findOne(options.criteria)
       .select(options.select)

@@ -17,7 +17,9 @@ router
     passport.authenticate('facebook', {
       failureRedirect: '/auth/login'
     }),
-    auth.facebook
+    (req, res) => {
+      res.json({ 'msg': 'ok' })
+    }
   )
 
 module.exports = router
