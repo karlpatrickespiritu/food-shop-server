@@ -10,7 +10,7 @@ const express = require('express')
 const passport = require('passport')
 const app = express()
 const port = process.env.PORT || 3000
-const routes = require('./app/routes')
+// const routes = require('./app/routes')
 const models = join(__dirname, 'app/models')
 
 // Bootstrap models
@@ -20,7 +20,7 @@ fs.readdirSync(join(models))
 
 require('./config/passport')(passport)
 require('./config/express')(app, passport)
-app.use(routes)
+app.use(require('./app/routes'))
 
 connect()
   .on('error', console.log)

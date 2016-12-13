@@ -8,3 +8,4 @@ build/
 .idea/
 .eslintcache
 .env
+npm-debug.log*
