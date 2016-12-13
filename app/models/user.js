@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const paginate = require('mongoose-paginate')
 
 const UserSchema = new Schema({
   name: { type: String, required: [true, 'name is required'] },
@@ -35,5 +36,10 @@ UserSchema.statics = {
       .exec(cb)
   }
 }
+
+/**
+ * Plugins
+ */
+UserSchema.plugin(paginate)
 
 mongoose.model('User', UserSchema)

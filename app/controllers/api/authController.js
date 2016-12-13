@@ -3,5 +3,6 @@ exports.facebook = (req, res) => {
 }
 
 exports.index = (req, res) => {
-  res.json({ 'msg': 'login' })
+  const { email, password } = req
+  res.json({ email, password })
 }
