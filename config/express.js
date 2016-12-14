@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser')
 var cookieSession = require('cookie-session')
 var bodyParser = require('body-parser')
 var methodOverride = require('method-override')
-var csrf = require('csurf')
+// var csrf = require('csurf')
 
 var MongoStore = require('connect-mongo')(session)
 var flash = require('connect-flash')
@@ -91,12 +91,12 @@ module.exports = function (app, passport) {
 
   // adds CSRF support
   if (process.env.NODE_ENV !== 'test') {
-    app.use(csrf())
+    // app.use(csrf())
 
     // This could be moved to view-helpers :-)
-    app.use((req, res, next) => {
-      res.locals.csrf_token = req.csrfToken()
-      next()
-    })
+    // app.use((req, res, next) => {
+    //   res.locals.csrf_token = req.csrfToken()
+    //   next()
+    // })
   }
 }

@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const tutorial = require('../controllers/api/tutorialController')
+const tutorialController = require('../controllers/api/tutorialController')
 
 router
-  .get('/', tutorial.index)
-  .post('/', tutorial.create)
-  .patch('/:id', tutorial.update)
-  .delete('/:id', tutorial.delete)
+  .get('/', tutorialController.index)
+  .post('/', tutorialController.create)
+  .patch('/:id', tutorialController.update)
+  .delete('/:id', tutorialController.delete)
 
 module.exports = router

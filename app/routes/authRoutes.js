@@ -1,11 +1,13 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
-const auth = require('../controllers/api/authController')
-const user = require('../controllers/api/userController')
+const userController = require('../controllers/api/userController')
 
 router
-  .get('/login', auth.index)
+  .post('/register', (req, res) => {
+    console.log(req.body)
+    res.json(req.body)
+  })
   .get(
     '/facebook', 
     passport.authenticate('facebook', {
@@ -18,7 +20,7 @@ router
     passport.authenticate('facebook', {
       failureRedirect: '/auth/login'
     }),
-    user.index
+    userController.index
   )
 
 module.exports = router
